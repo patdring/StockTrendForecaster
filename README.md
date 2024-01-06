@@ -1,11 +1,4 @@
-# StockTrendForecaster
-Utilizing LSTM neural networks for stock price prediction. This repo contains a Jupyter Notebook demonstrating time series forecasting using historical stock data, economic indicators, and sentiment analysis. Ideal for exploring machine learning in finance.
-
-## Stock Price Prediction using LSTM
-
-This project focuses on predicting stock prices for the next 5 days based on historical data using a Long Short-Term Memory (LSTM) network. The goal is to demonstrate the application of LSTM neural networks in time series prediction, particularly in the context of financial markets.
-
-## Project Overview
+# Project Overview
 
 The core idea of this project is to predict stock prices using historical data. The dataset comprises simulated stock prices, along with correlated features such as economic indicators, temperature data, and sentiment data. These features are crafted to mimic real-world scenarios where multiple factors influence stock prices.
 
@@ -16,40 +9,68 @@ The dataset includes the following features:
 - **Economic Data**: Simulated economic data correlated with stock prices.
 - **Temperature Data**: Simulated temperature data, somewhat correlated with stock prices.
 - **Sentiment Data**: Simulated sentiment data, representing public sentiment and its impact on stock prices.
+  
+## LSTM (Long Short-Term Memory) Networks
 
-These features are combined and normalized to form the input to the LSTM model.
+### Overview
+LSTM networks are an advanced type of Recurrent Neural Network (RNN) designed to capture long-term dependencies in sequential data. Unlike standard RNNs, LSTMs include a series of gates that control the flow of information, allowing them to remember important inputs over long time intervals and forget the irrelevant ones.
 
-## LSTM for Time Series Prediction
+### Architecture
+- **Gates in LSTM**: Each LSTM unit has three gates: input, output, and forget gates. These gates determine what information should be retained or discarded as data flows through the sequence of LSTM cells.
+- **Cell State**: The cell state acts as a conveyor belt running straight down the entire chain, with minor linear interactions. It carries relevant information throughout the processing of the sequence.
+- **Hidden States**: Along with the cell state, hidden states are updated and passed to the next cell, contributing to the prediction at each step.
 
-LSTM networks are a type of recurrent neural network (RNN) suitable for time series prediction due to their ability to remember long-term dependencies. They are particularly useful in financial markets where past information is a key indicator of future trends.
+### Pros:
+- **Long-Term Dependency Learning**: Exceptional in capturing long-term relationships, crucial for time series.
+- **Flexibility**: Adaptable to different types of sequential data.
+- **Reduced Vanishing Gradient Problem**: Overcomes limitations of traditional RNNs by mitigating the vanishing gradient problem.
 
-### Model Architecture
+### Cons:
+- **Complexity**: More complex architectures leading to longer training times.
+- **Resource-Intensive**: Demands more computational power.
+- **Overfitting Risk**: Especially in scenarios with limited data.
 
-The LSTM model used in this project is defined with the following parameters:
-- **Input Size**: 4 (corresponding to the 4 features in the dataset)
-- **Hidden Layer Size**: 100
-- **Output Size**: 1 (predicting stock prices)
-- **Number of Layers**: 3
-- **Dropout**: 0.5
+---
 
-The model predicts stock prices based on a sequence of data points from the past.
+## N-Beats
 
-### Training and Validation
+### Overview
+N-Beats is a deep learning model for time series forecasting that stands out due to its pure forward fully-connected neural network architecture. It leverages a unique backward and forward residual link structure to decompose the forecast into multiple interpretable components.
 
-The model is trained with a batch size of 32 and a sequence length of 8. Early stopping is implemented to prevent overfitting, and gradient clipping is used to ensure stable training. The Adam optimizer with a learning rate of 0.001 and a learning rate scheduler are employed.
+### Architecture
+- **Fully Connected Layers**: N-Beats uses stacks of fully connected layers without any convolutional or recurrent layers.
+- **Backcast and Forecast**: The model makes use of two outputs at each block – backcast, which is used to subtract the already explained part of the input series, and forecast, which predicts future values.
+- **Interpretable Outputs**: The model can be configured to produce outputs that offer interpretations in terms of trend and seasonality components.
 
-## Visualization
+### Pros:
+- **Interpretable Forecasts**: Generates forecasts that can be broken down into understandable components.
+- **Model Flexibility**: Can be used standalone or in conjunction with other models.
+- **Simple Structure**: Relies on fully connected layers, avoiding the complexity of RNNs or CNNs.
 
-The results are visualized by comparing the actual stock prices with the 5-day predictions from the model. This visualization aids in understanding the model's performance and accuracy.
+### Cons:
+- **Data Intensive**: Requires substantial data for optimal performance.
+- **Computational Demand**: Potentially high computational requirements due to deep networks.
+- **Relatively New**: As a newer model, it might lack extensive real-world testing compared to established methods.
 
-## Usage
+---
 
-This project is structured as a Jupyter Notebook, making it easy to follow the code and visualize the output step-by-step.
+## Prophet
 
-## Getting Started
+### Overview
+Prophet is a forecasting tool developed by Facebook, designed to be accessible and produce high-quality forecasts. It is particularly effective for time series data with strong seasonal patterns and several seasons of historical data.
 
-To run this project, clone the repository and open the Jupyter Notebook in an environment that supports Python and PyTorch. Ensure you have the necessary libraries installed, including `torch`, `numpy`, `matplotlib`, and `sklearn`.
+### Architecture
+- **Trend Models**: Prophet automatically selects between linear or logistic growth trend models.
+- **Seasonality Decomposition**: It decomposes the time series into daily, weekly, and yearly seasonalities.
+- **Holiday Effects**: Allows incorporating known holiday effects into the model.
+- **Automated Model Tuning**: Automatically detects change points and adjusts trends accordingly.
 
-## Conclusion
+### Pros:
+- **User-Friendly**: Requires minimal data pre-processing and tuning.
+- **Effective Seasonality Handling**: Captures complex seasonal patterns effectively.
+- **Robust to Missing Data**: Handles missing data and outliers gracefully.
 
-This project demonstrates the capability of LSTM networks in predicting time series data. While the dataset used is simulated, the approach and methodology can be applied to real-world financial datasets.
+### Cons:
+- **Black Box Nature**: Offers less control over the modeling process.
+- **Optimized for Specific Use Cases**: Best suited for datasets with strong seasonal patterns.
+- **Limited Scope for Customization**: Offers less flexibility for expert adjustments.
