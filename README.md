@@ -74,3 +74,29 @@ Prophet is a forecasting tool developed by Facebook, designed to be accessible a
 - **Black Box Nature**: Offers less control over the modeling process.
 - **Optimized for Specific Use Cases**: Best suited for datasets with strong seasonal patterns.
 - **Limited Scope for Customization**: Offers less flexibility for expert adjustments.
+
+---
+
+## XGBoost (eXtreme Gradient Boosting)
+
+### Overview
+XGBoost is a scalable and efficient implementation of gradient boosting machines, a type of machine learning algorithm. It has gained popularity in the machine learning community for its performance in a variety of tasks, particularly in classification and regression problems. XGBoost is known for its speed and performance, especially in structured or tabular data, and is widely used in various competitions and practical applications.
+
+### Architecture
+- **Gradient Boosting Framework**: XGBoost uses a gradient boosting framework, where new models are added to correct the errors made by existing models.
+- **Tree-Based Models**: It primarily uses decision trees as base learners, which are sequentially improved.
+- **Regularization**: Includes both L1 and L2 regularization to prevent overfitting.
+- **Handling Missing Values**: XGBoost can handle missing data internally.
+
+### Pros:
+- **High Performance**: Often delivers superior results, especially in structured data scenarios.
+- **Scalability**: Efficiently scales to handle large datasets and computing environments.
+- **Feature Importance**: Provides built-in routines to assess the importance of different features.
+- **Flexibility**: Can be used for classification, regression, ranking, and other machine learning tasks.
+
+### Cons:
+- **Parameter Tuning**: Requires careful tuning of parameters to achieve the best performance.
+- **Less Intuitive**: Decision tree ensembles can be harder to interpret than simpler models.
+- **Resource-Intensive for Large Datasets**: Although efficient, it can be resource-intensive for very large datasets.
+- **Overfitting Risk**: If not properly tuned, it can overfit, especially on small datasets.
+
